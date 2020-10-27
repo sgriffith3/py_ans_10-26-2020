@@ -8,10 +8,10 @@ fish = []
 
 pets = [{"type": "dog", "name": "mudge", "age": 4}, 
         {"type": "fish", "name": "dorothy", "age": "3 days"},
-		{"type": "dog", "name": "bingo", "age": 12},
-		{"type": "fish", "name": "nemo", "age": 2},
-		{"type": "cat", "name": "fluffy", "age": 1}
-		]
+        {"type": "dog", "name": "bingo", "age": 12},
+        {"type": "fish", "name": "nemo", "age": 2},
+        {"type": "cat", "name": "fluffy", "age": 1}
+        ]
 		
 #Use a for loop to sort each pet dictionary from the 
 #list of pets into the dogs or fish list.
