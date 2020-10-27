@@ -16,6 +16,21 @@ pets = [{"type": "dog", "name": "mudge", "age": 4},
 #Use a for loop to sort each pet dictionary from the 
 #list of pets into the dogs or fish list.
 
+for item in pets:
+    print(item)
+    print(item["type"])
+    if item["type"] == "dog":
+        dogs.append(item['name'])
+        print(f"{item['name']} is my pet dog")
+    elif item["type"] == "fish":
+        fish.append(item['name'])
+        print(f"{item['name']} is my pet fish")
+    else:
+        print(f"{item['name']} is not my pet")
+
+
+print(dogs)
+print(fish)
 #*Hint: if your iterator is "item" you will need to use item["type"] to
 #       determine what type of animal it is.
 
