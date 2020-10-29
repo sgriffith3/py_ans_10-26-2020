@@ -1,3 +1,24 @@
+---
+- name: Ansible Challenge 1
+  hosts: planet_express
+
+  vars_prompt:
+  - name: "apt_package_name"
+    prompt: "What package do you want apt to install? "
+    private: no
+
+  tasks:
+  - name: Debug our variable
+    debug:
+      msg: "{{ apt_package_name }}"
+
+  - name: "Apt install our {{ apt_package_name }}"
+    apt:
+      name: "{{ apt_package_name }}"
+      state: present
+    become: True
+
+
 # Ansible Challenge #1
 
 # Create a playbook that allows a user to apt install a package,
