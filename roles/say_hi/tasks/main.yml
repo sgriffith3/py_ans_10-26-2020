@@ -1,0 +1,10 @@
+---
+# tasks file for say_hi
+- name: first task for say_hi
+  debug:
+    msg: Hello!
+
+- name: second task
+  debug:
+    msg: Goodbye!
+

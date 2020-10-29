@@ -1,0 +1,5 @@
+- name: Installing figlet
+  apt:
+    name: figlet
+    state: present
+  become: True

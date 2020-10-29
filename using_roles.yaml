@@ -1,0 +1,12 @@
+---
+- name: First playbook that uses roles
+  hosts: planet_express
+  gather_facts: False
+
+  pre_tasks:
+  - debug:
+      msg: "Hola"
+
+  roles:
+  - name: say_hi
+  - name: install_figlet

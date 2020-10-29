@@ -1,0 +1,38 @@
+---
+- name: This is a basic playbook
+  hosts: fry
+  gather_facts: False
+
+  vars:
+    animal: cat
+
+  vars_prompt:
+  - name: "animal"
+    prompt: "What animal do you want?"
+    private: False
+
+  tasks:
+  - name: print out the animal
+    debug:
+      var: animal
+
+  - name: basic debug
+    debug:
+      msg: We want to NOT gather facts
+    tags:
+    - never
+    - poodle
+
+  - name: advanced debug
+    debug:
+      msg: This should run when we ask for cows
+    tags:
+    - cows
+
+  - name: another debug
+    debug:
+      msg: This should run for cows and horses
+    tags:
+    - cows
+    - horses
+
