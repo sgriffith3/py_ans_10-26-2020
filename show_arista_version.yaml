@@ -1,0 +1,12 @@
+---
+- name: Get arista switch version
+  hosts: arista_switches
+
+  tasks:
+  - name: run show version on remote devices
+    eos_command:
+      commands: show version
+    register: ver
+
+  - debug:
+      var: ver

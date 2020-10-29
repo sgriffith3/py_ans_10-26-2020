@@ -1,0 +1,44 @@
+configure terminal
+arista(config)#!=== SW2 ===!
+arista(config)#
+arista(config)#!--- vEOS config ---!
+arista(config)#enable
+% Incomplete command
+arista(config)#configure terminal
+arista(config)#hostname napya-###-sw2
+
+% Host name is invalid. Host name must contain only alphanumeric characters, '.' and '-'.
+It must begin and end with an alphanumeric character. 
+Maximum characters in hostname is 64.
+arista(config)#
+arista(config)#
+arista(config)#!--- MGMT ---!
+arista(config)#username admin secret alta3
+arista(config)#interface Management 1
+arista(config-if-Ma1)#ip address dhcp
+arista(config-if-Ma1)#dhcp client accept default-route
+arista(config-if-Ma1)#mtu 1450
+arista(config-if-Ma1)#exit
+arista(config)#
+arista(config)#!--- API ---!
+arista(config)#management api http-commands
+arista(config-mgmt-api-http-cmds)#no shutdown
+arista(config-mgmt-api-http-cmds)#protocol https
+arista(config-mgmt-api-http-cmds)#protocol http
+arista(config-mgmt-api-http-cmds)#exit
+arista(config)#
+arista(config)#!--- SSH ---!
+arista(config)#management ssh
+arista(config-mgmt-ssh)#idle-timeout 0
+arista(config-mgmt-ssh)#authentication mode keyboard-interactive
+arista(config-mgmt-ssh)#server-port 22
+arista(config-mgmt-ssh)#no fips restrictions
+arista(config-mgmt-ssh)#no hostkey client strict-checking
+arista(config-mgmt-ssh)#no shutdown
+arista(config-mgmt-ssh)#login timeout 120
+arista(config-mgmt-ssh)#log-level info
+arista(config-mgmt-ssh)#exit
+arista(config)#exit
+arista#write memory
+Copy completed successfully.
+arista#

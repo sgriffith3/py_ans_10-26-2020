@@ -1,0 +1,15 @@
+---
+- name: Understanding when
+  hosts: planet_express
+
+  tasks:
+  - shell: ls /tmp
+    register: tmp_files
+    when: inventory_hostname  != "fry"
+
+  - debug:
+      msg: "{{ tmp_files.stdout_lines }}"
+    when: inventory_hostname  != "fry"
+
+  - debug:
+      var: tmp_files.stdout_lines 

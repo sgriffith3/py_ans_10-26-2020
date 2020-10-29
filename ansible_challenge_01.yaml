@@ -1,0 +1,6 @@
+# Ansible Challenge #1
+
+# Create a playbook that allows a user to apt install a package,
+# based on a variable defined from user input (using vars_prompt:).
+
+# Run this playbook against your planet_express hosts.
