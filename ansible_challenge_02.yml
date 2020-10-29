@@ -1,0 +1,12 @@
+# Ansible Challenge # 2
+
+1. Create a role named "show_version"
+2. Have the "tasks/main.yml" tasks perform the cli_command "show version"
+3. Create a new playbook in the "mycode" directory called "netconfig01.yml" which 
+   runs the "show_version" role against the arista_switches hosts
+
+
+If you are feeling advanced: 
+
+Create a block and rescue section inside of the show_version role which will 
+have the block fail if a condition is met (You pick what condition that is). 
