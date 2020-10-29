@@ -1,0 +1,41 @@
+---
+- name: Examples of error handling
+  hosts: planet_express
+
+  tasks:
+
+  # We think: Hey, there might an error here in the next few steps
+  #
+  # action: create a set of steps to attempt to execute
+
+  - name: My first block 
+    block:
+
+    - name: Explaining things
+      debug:
+        msg: We will be intentionally failing on the next step
+
+    - name: Failing here
+      fail:
+        msg: Well, that didn't work
+      when: inventory_hostname == "fry"
+
+    # This task will never run if the previous task fails
+    - name: Trying to make this step work next
+      debug:
+        msg: Will this step work?
+
+    # If one of those tasks in the block fails, what should happen next?
+    #
+    # action: Have a rescue task
+
+    rescue: 
+
+    - name: Help statement
+      debug:
+        msg: Something must have failed, let's keep chugging along
+
+  - name: Outside of the block and rescue
+    debug: 
+      msg: This is outside of the block and rescue section
+

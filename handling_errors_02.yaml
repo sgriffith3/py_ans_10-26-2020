@@ -1,0 +1,51 @@
+---
+- name: More block and rescue examples
+  hosts: planet_express
+
+  tasks:
+
+  - name: Block for apt installs
+    block:
+
+    - name: apt install figlet
+      apt:
+        name: figlet
+        state: present
+      become: True
+
+    - command: touch /tmp/figlet_installed
+      when: inventory_hostname != "fry"
+
+    - name: check to see if /tmp/figlet_installed is there
+      stat:
+        path: /tmp/figlet_installed
+      register: figgy
+
+    - name: fail when /tmp/figlet_installed does not exist
+      fail:
+        msg: /tmp/figlet_installed does not exist
+      when: not figgy.stat.exists
+    
+    rescue:
+    - name: Try to install figlet again
+      apt:
+        name: figlet
+        state: present
+      become: True
+
+    - command: touch /tmp/figlet_installed
+      when: inventory_hostname != "fry"
+
+    - name: check to see if /tmp/figlet_installed is there
+      stat:
+        path: /tmp/figlet_installed
+      register: figgy
+
+    - name: fail when /tmp/figlet_installed does not exist
+      fail:
+        msg: /tmp/figlet_installed does not exist
+      when: not figgy.stat.exists
+
+    always:
+      - command: rm /tmp/figlet_installed
+ 
