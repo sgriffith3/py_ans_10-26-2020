@@ -1,0 +1,8 @@
+- name: Run the show version command
+  cli_command:
+    command: show version
+  register: version_info
+
+- name: print out the version_info
+  debug:
+    var: version_info

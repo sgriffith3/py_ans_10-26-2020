@@ -1,0 +1,7 @@
+---
+- name: Run the show_version role
+  hosts: ~^arista
+
+  roles:
+  - name: show_version
+
