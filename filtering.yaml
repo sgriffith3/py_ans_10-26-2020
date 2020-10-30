@@ -1,0 +1,20 @@
+---
+- name: Learning filters
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+  - debug: 
+      msg: "Capitalize does: {{ my_var | capitalize }} and Upper does: {{ my_var | upper }}"
+    vars:
+      my_var: "Hakuna Matata"
+
+  - debug:
+      msg: "List length is {{ my_nums | length }} Normal list {{ my_nums }} and sorted list is {{ my_nums | sort }}"
+    vars:
+      my_nums: [ 89, 101, 23, 72, 42, 52, 1, 67]
+
+  - debug:
+      msg: "Normal {{ romeo }},  upper {{ romeo.upper() }}, lower {{ romeo.lower() }}"
+    vars:
+      romeo: "Wherefore Art Thou?"

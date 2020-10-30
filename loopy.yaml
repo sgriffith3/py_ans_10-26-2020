@@ -1,0 +1,27 @@
+---
+- name: Learning loops
+  hosts: localhost
+  gather_facts: no
+
+  vars:
+    pets:
+    - [cat1, cat2]
+    - dog
+    - hamster
+
+  tasks:
+  - name: printing out the var
+    debug:
+      msg: "{{ pets }}"
+
+  - name: Printing out a loop with with_items
+    debug:
+      msg: "cp {{ item }} /tmp/pets/"
+    with_items: "{{ pets }}"
+
+  - name: Printing out a loop with loop
+    debug:
+      msg: "looping with: {{ item }}"
+    loop: "{{ pets }}"
+
+
